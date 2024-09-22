@@ -1,4 +1,4 @@
-import { format, isBefore, isEqual, isSameDay } from 'date-fns'
+import { isBefore, isSameDay } from 'date-fns'
 
 export interface Task {
     _id: number;

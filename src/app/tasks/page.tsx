@@ -1,6 +1,5 @@
 'use client';
 
-import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import TaskList from "@/components/TaskList/TaskList";
@@ -10,7 +9,6 @@ import { tasksAtom } from "../atoms/tasksAtom";
 import Navbar from "@/components/Navbar";
 
 export default function TaskPage() {
-    const router = useRouter();
     const [tasks, setTasks] = useRecoilState(tasksAtom);
     console.log("Task Atom from tasks: ", tasks);
 
@@ -33,7 +31,6 @@ export default function TaskPage() {
         console.log("Tasks: ", tasks);
     }, [tasks])
 
-    // Redirect logic is handled by ProtectedRoute, so we can simplify this
     return (
         <div>
             <Navbar />

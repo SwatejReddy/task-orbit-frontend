@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
 import { Button } from "@/components/ui/button"
@@ -14,7 +13,6 @@ import { Menu, LogOut } from 'lucide-react'
 import axios from 'axios'
 
 export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false)
     const router = useRouter()
     const currentPath = usePathname() // Get the current pathname
 
