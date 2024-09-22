@@ -11,7 +11,6 @@ export default function TaskPage() {
     const [tasks, setTasks] = useRecoilState(tasksAtom);
     console.log("Task Atom from tasks: ", tasks);
 
-
     useEffect(() => {
         async function getTasks() {
             try {
@@ -24,11 +23,11 @@ export default function TaskPage() {
             }
         }
         getTasks();
-    }, [])
+    }, [setTasks]); // Include setTasks in the dependency array
 
     useEffect(() => {
         console.log("Tasks: ", tasks);
-    }, [tasks])
+    }, [tasks]);
 
     return (
         <div>

@@ -1,11 +1,11 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Calendar } from "@/components/ui/calendar";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon, PlusCircle, X } from 'lucide-react';
-import { format } from 'date-fns';
-import { Filter } from "./util";
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Calendar } from "@/components/ui/calendar"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { CalendarIcon, PlusCircle, X } from 'lucide-react'
+import { format } from 'date-fns'
+import { Filter } from "./util"
 
 interface TaskFiltersProps {
     filter: Filter;
@@ -21,7 +21,6 @@ export function TaskFilters({ filter, setFilter, date, setDate, onAddNewTask }: 
         if (selectedDate) {
             setFilter({ ...filter, dueDate: selectedDate });
         } else {
-            // Instead of destructuring dueDate, just spread restFilter
             const { dueDate, ...restFilter } = filter;
             setFilter(restFilter);
         }
@@ -29,7 +28,6 @@ export function TaskFilters({ filter, setFilter, date, setDate, onAddNewTask }: 
 
     const clearDateFilter = () => {
         setDate(undefined);
-        // Same here, just spread restFilter
         const { dueDate, ...restFilter } = filter;
         setFilter(restFilter);
     };
@@ -105,5 +103,5 @@ export function TaskFilters({ filter, setFilter, date, setDate, onAddNewTask }: 
                 <PlusCircle className="mr-2 h-4 w-4" /> Add New Task
             </Button>
         </div>
-    );
+    )
 }
