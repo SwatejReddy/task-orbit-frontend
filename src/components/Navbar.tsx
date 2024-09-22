@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import {
     DropdownMenu,
@@ -11,18 +11,26 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Menu, LogOut } from 'lucide-react'
+import axios from 'axios'
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
     const router = useRouter()
+    const currentPath = usePathname() // Get the current pathname
 
-    const handleLogout = () => {
+    const handleLogout = async () => {
         // Implement logout logic here
+        await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/user/logout`, {}, { withCredentials: true });
         console.log('Logging out...')
+        router.push('/login')
     }
 
-    const navigateToKanban = () => {
-        router.push('/kanban')
+    const toggleTaskKanbanPage = () => {
+        if (currentPath === '/tasks') {
+            router.push('/kanban')
+        } else if (currentPath === '/kanban') {
+            router.push('/tasks')
+        }
     }
 
     return (
@@ -34,14 +42,11 @@ export default function Navbar() {
                             <span className="text-xl font-bold text-gray-800">Task Orbit</span>
                         </div>
                         <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-                            <Link href="/" className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
-                                Task Page
-                            </Link>
                             <button
-                                onClick={navigateToKanban}
+                                onClick={toggleTaskKanbanPage}
                                 className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300"
                             >
-                                Kanban Page
+                                {currentPath === '/tasks' ? 'Go to Kanban' : 'Go to Tasks'}
                             </button>
                         </div>
                     </div>
@@ -66,8 +71,8 @@ export default function Navbar() {
                                 <DropdownMenuItem asChild>
                                     <Link href="/">Task Page</Link>
                                 </DropdownMenuItem>
-                                <DropdownMenuItem onSelect={navigateToKanban}>
-                                    Kanban Page
+                                <DropdownMenuItem onSelect={toggleTaskKanbanPage}>
+                                    {currentPath === '/tasks' ? 'Go to Kanban' : 'Go to Tasks'}
                                 </DropdownMenuItem>
                                 <DropdownMenuItem onSelect={handleLogout}>
                                     <LogOut className="h-4 w-4 mr-2" />

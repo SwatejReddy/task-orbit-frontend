@@ -1,10 +1,13 @@
 import { selectorFamily } from "recoil";
-import { Task, tasksAtom } from "../atoms/tasksAtom";
+import { tasksAtom } from "../atoms/tasksAtom";
+import { Task } from "@/components/TaskList/util";
+
+
 
 export const taskSelector = selectorFamily<Task | undefined, string>({
     key: "taskSelector",
     get: (id: string) => ({ get }) => {
         const tasks = get(tasksAtom);
-        return tasks.find(task => task.id == parseInt(id));
+        return tasks.find(task => task._id == Number(id));
     }
 })

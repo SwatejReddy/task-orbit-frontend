@@ -12,6 +12,8 @@ import Navbar from "@/components/Navbar";
 export default function TaskPage() {
     const router = useRouter();
     const [tasks, setTasks] = useRecoilState(tasksAtom);
+    console.log("Task Atom from tasks: ", tasks);
+
 
     useEffect(() => {
         async function getTasks() {

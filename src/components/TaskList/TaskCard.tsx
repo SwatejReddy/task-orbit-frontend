@@ -3,8 +3,6 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { CalendarIcon, ChevronUp, ChevronDown, Edit, Trash2 } from 'lucide-react'
 import { Task, getStatusColor, getPriorityColor } from './util'
-import { useRecoilValue } from "recoil"
-import { taskSelector } from "@/app/selectors/taskSelector"
 
 interface TaskCardProps {
     task: Task;
