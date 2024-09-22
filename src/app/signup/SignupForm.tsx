@@ -17,7 +17,6 @@ import { Button } from "@/components/ui/button"
 import { useState } from "react"
 import { ReloadIcon } from "@radix-ui/react-icons"
 import { useRouter } from "next/navigation";
-import responseType from "@/types/response";
 
 // Define form schema using Zod
 const formSchema = z.object({
@@ -53,10 +52,10 @@ export const SignupForm = () => {
         setLoading(true);
         try {
             // make an api call and submit the form
-            const res: responseType = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/user/register`, values);
+            const res: any = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/user/register`, values);
             console.log(res.data)
             console.log(res)
-            if (res.data.statusCode === 200) {
+            if (res.data.statusCode == 200) {
                 alert("Account created successfully!");
                 router.push("/login")
             }
