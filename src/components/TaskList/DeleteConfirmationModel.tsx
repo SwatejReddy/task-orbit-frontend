@@ -17,7 +17,8 @@ export function DeleteConfirmationModal({ isOpen, onClose, onConfirm, taskTitle 
                 </DialogHeader>
                 <div className="py-4">
                     <p className="text-sm text-gray-700 dark:text-gray-300">
-                        Are you sure you want to delete the task "{taskTitle}"? This action cannot be undone.
+                        Are you sure you want to delete the task &quot;{taskTitle}&quot;? This action cannot be undone.
+
                     </p>
                 </div>
                 <DialogFooter className="flex justify-end space-x-2">

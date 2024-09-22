@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 import TaskList from "@/components/TaskList/TaskList";
 import axios from "axios";
 import { useRecoilState } from "recoil";

@@ -19,7 +19,7 @@ function LoginPage() {
                         Login
                     </div>
                     <div className="text-gray-500">
-                        Don't have an account?<Button variant={"link"} onClick={handleSignupRedirect}>Sign Up</Button>
+                        Don&apos;t have an account?<Button variant={"link"} onClick={handleSignupRedirect}>Sign Up</Button>
                     </div>
                 </div>
                 <div className="mb-5 mt-8"> {/* Added mt-8 here for margin top */}
